@@ -1,0 +1,8 @@
+AllCops:
+  TargetRubyVersion: '2.4.10'
+
+Metrics/BlockLength:
+  ExcludedMethods: ['describe', 'context']
+
+Style/FrozenStringLiteralComment:
+  Enabled: false

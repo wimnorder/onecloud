@@ -2,16 +2,16 @@
 
 require 'spec_helper'
 
-describe Onecloud::DC do
+describe Onecloud::Customer do
   before(:each) do
     @api = Onecloud::Api.new('FAKE_TOKEN')
     @api.stub :get
   end
 
-  describe '#dcLocation' do
+  context '#balance' do
     it 'calls #get with the correct url' do
-      @api.should_receive(:get).with('dcLocation')
-      @api.datacenters
+      @api.should_receive(:get).with('customer/balance')
+      @api.balance
     end
   end
 end

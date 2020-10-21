@@ -1,10 +1,14 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
+
+ruby '2.4.10'
 
 # Specify your gem's dependencies in onecloud.gemspec
 gemspec
 
 group :development do
-    gem 'guard-rspec', require: false
-    gem 'guard-rubocop'
-    gem 'coveralls', require: false
-  end
+  gem 'coveralls', require: false
+  gem 'guard-rspec', require: false
+  gem 'guard-rubocop'
+end
