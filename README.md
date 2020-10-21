@@ -52,6 +52,7 @@ api.update_server_by_id('SERVER_ID', {
     HDD: 80
 })
 ```
+See examples [here](https://github.com/wimnorder/onecloud-examples)
 
 ## Development
 
