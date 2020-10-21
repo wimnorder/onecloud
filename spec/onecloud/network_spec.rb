@@ -25,7 +25,7 @@ describe Onecloud::Network do
 
     describe 'create network by ID' do
       it 'calls #get with the correct url' do
-      params = { name: :new_network } 
+        params = { name: :new_network }
         @api.should_receive(:post).with('network', params)
         @api.add_network params
       end
