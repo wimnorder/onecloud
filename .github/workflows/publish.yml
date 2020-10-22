@@ -1,4 +1,7 @@
 # Publish pipline (WIP)
+env:
+  RUBY_VERSION: 2.4 # change to matrix
+
 name: RSpec tests
 on: [push, pull_request]
 jobs:
