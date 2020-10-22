@@ -8,7 +8,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - uses: actions/setup-ruby@v1
-        with:
+      with:
         ruby-version: ${{ env.RUBY_VERSION }}
     - name: Install Rubocop
       run: gem install rubocop
