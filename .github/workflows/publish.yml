@@ -23,7 +23,6 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
-        run: mkdir -p ./coverage
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
@@ -33,6 +32,8 @@ jobs:
         run: gem install coveralls
       - name: run specs
         run: rspec
+      - name: mkdir for Lcov.info
+        run: mkdir -p ./coverage
       - name: Upload coverage results    
         uses: actions/upload-artifact@v2
         if: always()
