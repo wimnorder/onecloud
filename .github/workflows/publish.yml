@@ -37,9 +37,9 @@ jobs:
         if: always()
         with:
           name: coverage/lcov.info
-          path: coverage/lcov.info
+          path: ./coverage/lcov.info
       - name: Coveralls
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: coverage/lcov.info
+          path-to-lcov: ./coverage/lcov.info
