@@ -26,10 +26,6 @@ jobs:
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
-    #   - name: Install dependencies
-    #     run: |
-    #       gem install bundler
-    #       bundler install
       - name: Install RSpec
         run: gem install rspec
       - name: Install Coveralls
