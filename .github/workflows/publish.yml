@@ -1,21 +1,39 @@
-
+# Publish pipline (WIP)
+name: RSpec tests
 on: [push, pull_request]
 jobs:
-  test:
-    strategy:
-      matrix:
-        ruby: [2.5, 2.6, 2.7]
-    runs-on: ubuntu-latest
+  rubocop-test:
+    name: Rubocop
+    runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
-      - uses: ruby/setup-ruby@v1
+    - uses: actions/checkout@v1
+    - uses: actions/setup-ruby@v1
         with:
-          ruby-version: ${{ matrix.ruby }}
-      - uses: actions/cache@v1
+        ruby-version: ${{ env.RUBY_VERSION }}
+    - name: Install Rubocop
+      run: gem install rubocop
+    - name: Check code
+      run: rubocop
+  rspec-test:
+    name: RSpec
+    needs: rubocop-test
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-ruby@v1
         with:
-          path: vendor/bundle
-          key: bundle-${{ matrix.ruby }}-${{ hashFiles('**/*.gemspec') }}
-          restore-keys: bundle-${{ matrix.ruby }}
-      - run: bundle config set path 'vendor/bundle'
-      - run: bundle install --jobs 4 --retry 3
-      - run: rspec
+          ruby-version: ${{ env.RUBY_VERSION }}
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundler install
+      - name: Install RSpec
+        run: gem install rspec
+      - name: run specs
+        run: rspec
+      - name: Upload coverage results    
+        uses: actions/upload-artifact@master
+        if: always()
+        with:
+          name: coverage-report
+          path: coverage
