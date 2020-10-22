@@ -1,8 +1,9 @@
 # Onecloud
 
 Onecloud - API wrapper for Russian cloud provider 1Cloud.ru  
-[![Gem Version](https://badge.fury.io/rb/onecloud.svg)](https://badge.fury.io/rb/onecloud)
-![](http://ruby-gem-downloads-badge.herokuapp.com/onecloud?type=total)  
+[![Gem Version](https://badge.fury.io/rb/onecloud.svg)](https://badge.fury.io/rb/onecloud)  
+![](http://ruby-gem-downloads-badge.herokuapp.com/onecloud?type=total)
+[![Coverage Status](https://coveralls.io/repos/github/wimnorder/onecloud/badge.svg?branch=master)](https://coveralls.io/github/wimnorder/onecloud?branch=master)  
 
 ## Installation
 
