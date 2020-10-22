@@ -2,7 +2,7 @@
 env:
   RUBY_VERSION: 2.4 # change to matrix
 
-name: RSpec tests
+name: Publish gem
 on: [push, pull_request]
 jobs:
   rubocop-test:
