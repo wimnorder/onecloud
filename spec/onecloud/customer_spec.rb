@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Onecloud::Customer do
@@ -6,7 +8,7 @@ describe Onecloud::Customer do
     @api.stub :get
   end
 
-  describe '#balance' do
+  context '#balance' do
     it 'calls #get with the correct url' do
       @api.should_receive(:get).with('customer/balance')
       @api.balance

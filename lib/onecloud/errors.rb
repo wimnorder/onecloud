@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Onecloud
   # API response codes
   module Errors
@@ -8,6 +10,6 @@ module Onecloud
       "404": 'Object not found',
       "400": 'Bad request parameters',
       "500": 'Unknown error has occurred - contact 1Cloud.ru support'
-    }
+    }.freeze
   end
 end

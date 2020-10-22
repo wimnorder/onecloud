@@ -9,21 +9,21 @@ describe Onecloud::Network do
   end
 
   describe '#network' do
-    describe 'list all networks' do
+    context 'list all networks' do
       it 'calls #get with the correct url' do
         @api.should_receive(:get).with('network')
         @api.networks
       end
     end
 
-    describe 'private network by ID' do
+    context 'private network by ID' do
       it 'calls #get with the correct url' do
         @api.should_receive(:get).with('network')
         @api.networks
       end
     end
 
-    describe 'create network by ID' do
+    context 'create network by ID' do
       it 'calls #get with the correct url' do
         params = { name: :new_network }
         @api.should_receive(:post).with('network', params)
@@ -31,13 +31,12 @@ describe Onecloud::Network do
       end
     end
 
-    describe 'remove network by ID' do
+    context 'remove network by ID' do
       it 'calls #delete with the correct url' do
-        id = 12345
+        id = 123
         @api.should_receive(:delete).with("network/#{id}")
         @api.remove_network id
       end
     end
-
   end
 end

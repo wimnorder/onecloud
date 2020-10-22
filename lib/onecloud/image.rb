@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Onecloud
   # Server Images (templates)
   module Image
