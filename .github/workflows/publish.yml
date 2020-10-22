@@ -33,15 +33,15 @@ jobs:
       - name: run specs
         run: rspec
       - name: mkdir for Lcov.info
-        run: mkdir -p ./coverage
+        run: mkdir -p ${{ github.workspace }}/coverage
       - name: Upload coverage results    
         uses: actions/upload-artifact@v2
         if: always()
         with:
-          name: Lcov.info
-          path: ./coverage/Lcov.info
+          name: lcov.info
+          path: ${{ github.workspace }}/coverage/lcov.info
       - name: Coveralls
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: ./coverage/Lcov.info
+          path-to-lcov: ${{ github.workspace }}/coverage/lcov.info
