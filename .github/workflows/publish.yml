@@ -22,7 +22,8 @@ jobs:
     needs: rubocop-test
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+        run: mkdir -p ./coverage
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
@@ -33,12 +34,13 @@ jobs:
       - name: run specs
         run: rspec
       - name: Upload coverage results    
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v2
         if: always()
         with:
           name: Lcov.info
-          path: ./coverage
+          path: ./coverage/Lcov.info
       - name: Coveralls
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./coverage/Lcov.info
