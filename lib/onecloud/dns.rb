@@ -1,9 +1,13 @@
+# frozen_string_literal: true
+
 module Onecloud
   # Operations with DNS
-  module DNS # TODO: Rename to 'Domains'
+  # TODO: Rename to 'Domains'
+  module DNS
     # List of all domains
     def domains
-      get("Dns") # TODO: alias: all_dns, dns, dns_list
+      # TODO: alias: all_dns, dns, dns_list
+      get('Dns')
     end
 
     # Domain by ID
@@ -22,32 +26,32 @@ module Onecloud
     end
 
     # Create A type record
-    def add_domain_record_A(params)
+    def add_domain_record_a(params)
       post('dns/recorda', params)
     end
 
     # Create AAAA type record
-    def add_domain_record_AAAA(params)
+    def add_domain_record_aaaa(params)
       post('dns/recordaaaa', params)
     end
 
     # Create CNAME type record
-    def add_domain_record_CNAME(params)
+    def add_domain_record_cname(params)
       post('dns/recordcname', params)
     end
 
     # Create MX type record
-    def add_domain_record_MX(params)
+    def add_domain_record_mx(params)
       post('dns/recordmx', params)
     end
 
     # Create NS type record
-    def add_domain_record_NS(params)
+    def add_domain_record_ns(params)
       post('dns/recordns', params)
     end
 
     # Create TXT type record
-    def add_domain_record_TXT(params)
+    def add_domain_record_txt(params)
       post('dns/recordtxt', params)
     end
 
@@ -57,7 +61,7 @@ module Onecloud
     end
 
     # Create SRV type record
-    def add_domain_record_SRV(params)
+    def add_domain_record_srv(params)
       post('dns/recordsrv', params)
     end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'net/http'
 require 'openssl'
 require 'json'
@@ -28,14 +30,14 @@ module Onecloud
     include Server
     include Errors
 
-    API_ENDPOINT = 'https://api.1cloud.ru/'.freeze
+    API_ENDPOINT = 'https://api.1cloud.ru/'
 
     HTTP_METHODS = {
       get: Net::HTTP::Get,
       put: Net::HTTP::Put,
       post: Net::HTTP::Post,
       delete: Net::HTTP::Delete
-    }
+    }.freeze
 
     def initialize(token)
       @token = token
@@ -57,7 +59,7 @@ module Onecloud
         json_body = JSON.parse(response.body, quirks_mode: true)
         result.new(response.code, RESPONSE_CODES[response.code.to_s.to_sym], json_body)
       else
-      	result.new(response.code, nil)
+        result.new(response.code, nil)
       end
     end
 
@@ -69,7 +71,7 @@ module Onecloud
       request['Content-Type'] = 'application/json'
       request['Authorization'] = ['Bearer ', @token].join
 
-      if ['post', 'put'].include?(meth.to_s)
+      if %w[post put].include?(meth.to_s)
         request.body = params.to_json
         return @http.request(request)
       end

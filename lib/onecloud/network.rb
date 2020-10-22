@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Onecloud
   # Private networks
   module Network
