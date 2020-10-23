@@ -36,16 +36,16 @@ jobs:
         uses: actions/upload-artifact@v2
         if: always()
         with:
-          name: code-coverage-report
+          name: code-coverage-report.info
           path: ${{ github.workspace }}/coverage
       - name: Upload to codecov.io
         uses: codecov/codecov-action@v1.0.2
         with:
           token: ${{secrets.CODECOV_TOKEN}}
-          file: ${{ github.workspace }}/coverage/code-coverage-report
+          file: ${{ github.workspace }}/coverage/code-coverage-report.info
           verbose: true
       - name: Archive code coverage results
         uses: actions/upload-artifact@v1
         with:
-          name: code-coverage-report
+          name: code-coverage-report.info
           path: ${{ github.workspace }}/coverage
