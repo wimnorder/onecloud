@@ -36,10 +36,10 @@ jobs:
         uses: actions/upload-artifact@v2
         if: always()
         with:
-          name: coverage/lcov.info
-          path: ./coverage/lcov.info
+          name: coverage-report
+          path: coverage
       - name: Coveralls
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: ./coverage/lcov.info
+          path-to-lcov: coverage/coverage-report
