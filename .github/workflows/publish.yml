@@ -6,7 +6,7 @@ name: Publish gem
 on: [push, pull_request]
 jobs:
   rubocop-test:
-    name: Rubocop
+    name: Rubocop test
     runs-on: ubuntu-18.04
     steps:
     - uses: actions/checkout@v1
@@ -22,14 +22,10 @@ jobs:
     needs: rubocop-test
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
-    #   - name: Install dependencies
-    #     run: |
-    #       gem install bundler
-    #       bundler install
       - name: Install RSpec
         run: gem install rspec
       - name: Install Coveralls
@@ -37,8 +33,19 @@ jobs:
       - name: run specs
         run: rspec
       - name: Upload coverage results    
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v2
         if: always()
         with:
-          name: coverage-report
-          path: coverage
+          name: code-coverage-report.info
+          path: ${{ github.workspace }}/coverage
+      - name: Upload to codecov.io
+        uses: codecov/codecov-action@v1.0.2
+        with:
+          token: ${{secrets.CODECOV_TOKEN}}
+          file: ${{ github.workspace }}/coverage/code-coverage-report.info
+          verbose: true
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v1
+        with:
+          name: code-coverage-report.info
+          path: ${{ github.workspace }}/coverage
